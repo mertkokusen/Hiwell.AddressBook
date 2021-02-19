@@ -1,16 +1,13 @@
 ﻿using AutoMapper;
 using FluentValidation;
 using Hiwell.AddressBook.Core.Entities;
+using Hiwell.AddressBook.Core.Extensions;
 using Hiwell.AddressBook.Core.Interfaces;
 using Hiwell.AddressBook.Core.Mappings;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Net.Mail;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -32,21 +29,7 @@ namespace Hiwell.AddressBook.Core.UseCases
     {
         public AddNewContactCommandRequestValidator()
         {
-            RuleFor(r => r.Email).Must(ValidateEmail).WithMessage("Invalid email address.");
-        }
-
-        //TODO: We may change this with regex
-        public bool ValidateEmail(string emailaddress)
-        {
-            try
-            {
-                MailAddress m = new MailAddress(emailaddress);
-                return true;
-            }
-            catch (FormatException)
-            {
-                return false;
-            }
+            RuleFor(r => r.Email).MustBeValidEmail();
         }
     }
 
