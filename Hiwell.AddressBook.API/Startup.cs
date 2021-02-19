@@ -1,5 +1,7 @@
+using FluentValidation.AspNetCore;
 using Hiwell.AddressBook.API.Filters;
 using Hiwell.AddressBook.Core.Extensions;
+using Hiwell.AddressBook.Core.UseCases;
 using Hiwell.AddressBook.EF.Sqlite;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -23,9 +25,10 @@ namespace Hiwell.AddressBook.API
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers(options => {
+            services.AddControllers(options =>
+            {
                 options.Filters.Add<ModelStateValidationFilter>();
-            });
+            }).AddFluentValidation(config =>config.RegisterValidatorsFromAssemblyContaining<RequestValidatorsSourceAssembly>());
 
             services.AddSwaggerGen(c =>
             {
