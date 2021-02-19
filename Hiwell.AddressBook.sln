@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hiwell.AddressBook.API", "Hiwell.AddressBook.API\Hiwell.AddressBook.API.csproj", "{18AA921E-B6D5-40DB-87B2-6A15AACCB851}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hiwell.AddressBook.Core", "Hiwell.AddressBook.Core\Hiwell.AddressBook.Core.csproj", "{B09089DD-45F6-4426-946F-79CE8773A278}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hiwell.AddressBook.EF.Sqlite", "Hiwell.AddressBook.EF.InMemory\Hiwell.AddressBook.EF.Sqlite.csproj", "{AA1FB863-4B57-44E6-B8E8-F1B789B4F66D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{18AA921E-B6D5-40DB-87B2-6A15AACCB851}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18AA921E-B6D5-40DB-87B2-6A15AACCB851}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18AA921E-B6D5-40DB-87B2-6A15AACCB851}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18AA921E-B6D5-40DB-87B2-6A15AACCB851}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B09089DD-45F6-4426-946F-79CE8773A278}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B09089DD-45F6-4426-946F-79CE8773A278}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B09089DD-45F6-4426-946F-79CE8773A278}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B09089DD-45F6-4426-946F-79CE8773A278}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA1FB863-4B57-44E6-B8E8-F1B789B4F66D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA1FB863-4B57-44E6-B8E8-F1B789B4F66D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA1FB863-4B57-44E6-B8E8-F1B789B4F66D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA1FB863-4B57-44E6-B8E8-F1B789B4F66D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F7DD6B00-C546-4F79-9425-E8CADB34451A}
+	EndGlobalSection
+EndGlobal
