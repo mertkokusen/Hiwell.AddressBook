@@ -15,5 +15,6 @@ namespace Hiwell.AddressBook.Core.Entities
         public string Email { get; set; }
         [Column(TypeName = "int")]
         public bool Active { get; set; }
+        public string UniqueId { get; set; }
     }
 }

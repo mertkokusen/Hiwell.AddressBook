@@ -7,6 +7,9 @@ using System.IO;
 
 namespace Hiwell.AddressBook.EF.Sqlite
 {
+    /// <summary>
+    /// This DbContext is only intended to be used for prototyping
+    /// </summary>
     public class AddressBookSqliteDbContext : DbContext, IAddressBookDbContext
     {
         public AddressBookSqliteDbContext(DbContextOptions<AddressBookSqliteDbContext> options) : base(options)
@@ -30,6 +33,6 @@ namespace Hiwell.AddressBook.EF.Sqlite
             return this.HasChanges();
         }
 
-        private string GetDummyDatabasePath() => Path.Combine(Path.GetDirectoryName(this.GetType().Assembly.Location), "HiWell.AddressBook.Test.db");
+        public static string GetDummyDatabasePath() => Path.Combine(Path.GetDirectoryName(typeof(AddressBookSqliteDbContext).Assembly.Location), "HiWell.AddressBook.Test.db");
     }
 }

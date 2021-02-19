@@ -28,7 +28,7 @@ namespace Hiwell.AddressBook.API
             services.AddControllers(options =>
             {
                 options.Filters.Add<ModelStateValidationFilter>();
-            }).AddFluentValidation(config =>config.RegisterValidatorsFromAssemblyContaining<RequestValidatorsSourceAssembly>());
+            }).AddFluentValidation(config => config.RegisterValidatorsFromAssemblyContaining<RequestValidatorsSourceAssembly>());
 
             services.AddSwaggerGen(c =>
             {
@@ -61,7 +61,7 @@ namespace Hiwell.AddressBook.API
                 endpoints.MapControllers();
             });
 
-            app.EnsureDbCreated();
+            app.EnsureDbCreated(deleteExistingDatabase: true);
         }
     }
 }

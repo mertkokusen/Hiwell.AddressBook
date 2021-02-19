@@ -1,6 +1,8 @@
 ﻿using Hiwell.AddressBook.Core.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.IO;
 using System.Linq;
 
 namespace Hiwell.AddressBook.EF.Sqlite
@@ -14,8 +16,17 @@ namespace Hiwell.AddressBook.EF.Sqlite
             services.AddScoped<IAddressBookDbContext>(provider => provider.GetService<AddressBookSqliteDbContext>());
         }
 
-        public static void EnsureDbCreated(this IApplicationBuilder app)
+        public static void EnsureDbCreated(this IApplicationBuilder app, bool deleteExistingDatabase = false)
         {
+            if (deleteExistingDatabase)
+            {
+                var dbPath = AddressBookSqliteDbContext.GetDummyDatabasePath();
+                if (File.Exists(dbPath))
+                {
+                    File.Delete(dbPath);
+                }
+            }
+
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetRequiredService<AddressBookSqliteDbContext>();
@@ -34,7 +45,8 @@ namespace Hiwell.AddressBook.EF.Sqlite
                         Email = "contact1@email.com",
                         Phone = "568498752",
                         MobilePhone = "5551112356",
-                        Active = true
+                        Active = true,
+                        UniqueId = Guid.NewGuid().ToString("N")
                     });
 
                     context.SaveChanges();
