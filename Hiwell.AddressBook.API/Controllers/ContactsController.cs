@@ -35,5 +35,11 @@ namespace Hiwell.AddressBook.API.Controllers
         {
             return await this.mediator.Send(request);
         }
+
+        [HttpPut]
+        public async Task<UpdateContactCommandResponse> UpdateContact(UpdateContactCommandRequest request)
+        {
+            return await this.mediator.Send(request);
+        }
     }
 }
