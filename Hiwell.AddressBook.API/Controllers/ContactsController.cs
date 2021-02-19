@@ -41,5 +41,11 @@ namespace Hiwell.AddressBook.API.Controllers
         {
             return await this.mediator.Send(request);
         }
+
+        [HttpPost("search")]
+        public async Task<List<ContactDto>> SearchContacts(SearchContactsQueryRequest request)
+        {
+            return await this.mediator.Send(request);
+        }
     }
 }
