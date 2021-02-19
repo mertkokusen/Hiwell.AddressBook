@@ -1,3 +1,4 @@
+using Hiwell.AddressBook.API.Filters;
 using Hiwell.AddressBook.Core.Extensions;
 using Hiwell.AddressBook.EF.Sqlite;
 using Microsoft.AspNetCore.Builder;
@@ -22,7 +23,10 @@ namespace Hiwell.AddressBook.API
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            services.AddControllers(options => {
+                options.Filters.Add<ModelStateValidationFilter>();
+            });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Hiwell.AddressBook.API", Version = "v1" });
