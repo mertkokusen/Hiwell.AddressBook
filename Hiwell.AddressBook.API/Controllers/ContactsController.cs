@@ -29,5 +29,11 @@ namespace Hiwell.AddressBook.API.Controllers
         {
             return await this.mediator.Send(request);
         }
+
+        [HttpDelete]
+        public async Task<DeleteContactCommandResponse> DeleteContact(DeleteContactCommandRequest request)
+        {
+            return await this.mediator.Send(request);
+        }
     }
 }
