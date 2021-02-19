@@ -1,12 +1,9 @@
-﻿using Hiwell.AddressBook.Core.Entities;
-using Hiwell.AddressBook.Core.Interfaces;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using MediatR;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using Hiwell.AddressBook.Core.Dtos;
+using Hiwell.AddressBook.Core.UseCases;
 
 namespace Hiwell.AddressBook.API.Controllers
 {
@@ -14,16 +11,17 @@ namespace Hiwell.AddressBook.API.Controllers
     [Route("[controller]")]
     public class ContactsController : ControllerBase
     {
-        private readonly IAddressBookDbContext dbContent;
-        public ContactsController(AddressBook.Core.Interfaces.IAddressBookDbContext dbContent)
+        private readonly IMediator mediator;
+
+        public ContactsController(IMediator mediator)
         {
-            this.dbContent = dbContent;
+            this.mediator = mediator;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Contact>> GetAll()
+        public async Task<List<ContactDto>> GetAll()
         {
-            return await this.dbContent.Contacts.ToListAsync();
+            return await this.mediator.Send(new GetAllContactsQuery());
         }
     }
 }
