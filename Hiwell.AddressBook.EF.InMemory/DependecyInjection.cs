@@ -23,6 +23,8 @@ namespace Hiwell.AddressBook.EF.Sqlite
 
                 var hasData = context.Contacts.Count() > 0;
 
+                //TODO: Generate random data with BOGUS 
+                //https://github.com/bchavez/Bogus
                 if (!hasData)
                 {
                     context.Contacts.Add(new Core.Entities.Contact()
@@ -34,7 +36,6 @@ namespace Hiwell.AddressBook.EF.Sqlite
                         MobilePhone = "5551112356",
                         Active = true
                     });
-
 
                     context.SaveChanges();
                 }
