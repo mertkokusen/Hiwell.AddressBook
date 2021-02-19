@@ -1,9 +1,8 @@
-﻿using Hiwell.AddressBook.Core.Entities;
-using Hiwell.AddressBook.Core.Interfaces;
+﻿using System.IO;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.IO;
+using Hiwell.AddressBook.Core.Entities;
+using Hiwell.AddressBook.Core.Interfaces;
 
 namespace Hiwell.AddressBook.EF.Sqlite
 {
