@@ -13,7 +13,7 @@ namespace Hiwell.AddressBook.Core.UseCases
     public class DeleteContactCommandRequest : IRequest<DeleteContactCommandResponse>
     {
         [Required]
-        public string UniqueKey { get; set; }
+        public string UniqueId { get; set; }
     }
 
     public class DeleteContactCommandResponse : BaseCommandResult
@@ -31,7 +31,7 @@ namespace Hiwell.AddressBook.Core.UseCases
 
         public override async Task<DeleteContactCommandResponse> Handle(DeleteContactCommandRequest request, CancellationToken cancellationToken)
         {
-            var contact = await this._context.Contacts.FirstOrDefaultAsync(c => c.UniqueId == request.UniqueKey);
+            var contact = await this._context.Contacts.FirstOrDefaultAsync(c => c.UniqueId == request.UniqueId);
             if (contact is null)
             {
                 return DeleteContactCommandResponse.Fail("A contact with the given unique key does not exist.");
