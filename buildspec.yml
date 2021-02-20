@@ -8,12 +8,12 @@ phases:
   pre_build:
     commands:
       - echo Restore started on `date`
-      - dotnet restore Hiwell.AddressBook.API/Hiwell.AddressBook.API.csproj
+      - dotnet restore Hiwell.AddressBook.sln
             
   build:
     commands:
       - echo Build started on `date`
-      - dotnet build Hiwell.AddressBook.API/Hiwell.AddressBook.API.csproj
+      - dotnet build Hiwell.AddressBook.sln
       
   post_build:
     commands:
