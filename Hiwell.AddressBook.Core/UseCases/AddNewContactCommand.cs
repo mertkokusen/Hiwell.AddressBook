@@ -65,6 +65,7 @@ namespace Hiwell.AddressBook.Core.UseCases
             }
 
             var newContact = this._mapper.Map<Contact>(request);
+            newContact.Active = true;
             newContact.UniqueId = Guid.NewGuid().ToString("N");
 
             this._context.Contacts.Add(newContact);
