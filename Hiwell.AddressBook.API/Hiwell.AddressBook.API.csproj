@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Hiwell.AddressBook.EF.InMemory\Hiwell.AddressBook.EF.Sqlite.csproj" />
+    <ProjectReference Include="..\Hiwell.AddressBook.EF.PostGreSQL\Hiwell.AddressBook.EF.PostGreSQL.csproj" />
   </ItemGroup>
 
 </Project>

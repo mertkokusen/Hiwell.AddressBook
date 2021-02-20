@@ -7,7 +7,7 @@ namespace Hiwell.AddressBook.Core.Interfaces
 {
     public interface IAddressBookDbContext
     {
-        bool HasChanges();
+        //bool HasChanges();
         int SaveChanges();
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);

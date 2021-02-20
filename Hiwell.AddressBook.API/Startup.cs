@@ -2,6 +2,7 @@ using FluentValidation.AspNetCore;
 using Hiwell.AddressBook.API.Filters;
 using Hiwell.AddressBook.Core.Extensions;
 using Hiwell.AddressBook.Core.UseCases;
+using Hiwell.AddressBook.EF.PostGreSQL;
 using Hiwell.AddressBook.EF.Sqlite;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -35,7 +36,8 @@ namespace Hiwell.AddressBook.API
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Hiwell.AddressBook.API", Version = "v1" });
             });
 
-            services.AddSqlite();
+            //services.AddSqlite();
+            services.AddPostGreSql();
 
             services.ConfigureCoreDependecies();
         }
@@ -61,7 +63,8 @@ namespace Hiwell.AddressBook.API
                 endpoints.MapControllers();
             });
 
-            app.EnsureDbCreated(deleteExistingDatabase: true);
+            //app.EnsureSqliteDbCreated(deleteExistingDatabase: true);
+            app.EnsurePostGreDbCreated();
         }
     }
 }

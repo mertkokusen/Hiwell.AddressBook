@@ -1,35 +1,27 @@
 ﻿using Hiwell.AddressBook.Core.Interfaces;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.IO;
 using System.Linq;
 
-namespace Hiwell.AddressBook.EF.Sqlite
+namespace Hiwell.AddressBook.EF.PostGreSQL
 {
     public static class DependecyInjection
     {
-        public static void AddSqlite(this IServiceCollection services)
+        public static void AddPostGreSql(this IServiceCollection services)
         {
-            services.AddDbContext<AddressBookSqliteDbContext>();
+            services.AddDbContext<AddressBookPostGreDbContext>();
 
-            services.AddScoped<IAddressBookDbContext>(provider => provider.GetService<AddressBookSqliteDbContext>());
+            services.AddScoped<IAddressBookDbContext>(provider => provider.GetService<AddressBookPostGreDbContext>());
         }
 
-        public static void EnsureSqliteDbCreated(this IApplicationBuilder app, bool deleteExistingDatabase = false)
+        public static void EnsurePostGreDbCreated(this IApplicationBuilder app)
         {
-            if (deleteExistingDatabase)
-            {
-                var dbPath = AddressBookSqliteDbContext.GetDummyDatabasePath();
-                if (File.Exists(dbPath))
-                {
-                    File.Delete(dbPath);
-                }
-            }
 
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
-                var context = serviceScope.ServiceProvider.GetRequiredService<AddressBookSqliteDbContext>();
+                var context = serviceScope.ServiceProvider.GetRequiredService<AddressBookPostGreDbContext>();
                 context.Database.EnsureCreated();
 
                 var hasData = context.Contacts.Count() > 0;
