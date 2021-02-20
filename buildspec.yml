@@ -8,21 +8,21 @@ phases:
   pre_build:
     commands:
       - echo Restore started on `date`
-      - dotnet restore Hiwell.AddressBook.API.csproj
+      - dotnet restore Hiwell.AddressBook.API/Hiwell.AddressBook.API.csproj
             
   build:
     commands:
       - echo Build started on `date`
-      - dotnet build Hiwell.AddressBook.API.csproj
+      - dotnet build Hiwell.AddressBook.API/Hiwell.AddressBook.API.csproj
       
   post_build:
     commands:
       - echo Publish started on `date`
       # https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/dotnet-linux-platform-bundle-app.html
-      - dotnet publish -c Release -r linux-x64 --self-contained false Hiwell.AddressBook.API.csproj
+      - dotnet publish -c Release -r linux-x64 --self-contained false Hiwell.AddressBook.API/Hiwell.AddressBook.API.csproj
       
 artifacts:
   files:
     - '**/*'
-  base-directory: ./bin/Release/net5.0/linux-x64/publish/
+  base-directory: ./Hiwell.AddressBook.API/bin/Release/net5.0/linux-x64/publish/
   discard-paths: no
