@@ -9,9 +9,9 @@ namespace Hiwell.AddressBook.EF.PostGreSQL
     public class AddressBookPostGreDbContext : DbContext, IAddressBookDbContext
     {
         private string connectionString;
-        public AddressBookPostGreDbContext(IConfiguration configuration, IConnectionStringProvider connectionStringProvider)
+        public AddressBookPostGreDbContext(IConfiguration configuration)
         {
-            this.connectionString = connectionStringProvider.Hiwelladdressbookdb;
+            this.connectionString = configuration.GetConnectionString("hiwelladdressbookdb");
         }
 
         public DbSet<Contact> Contacts { get; set; }

@@ -40,9 +40,6 @@ namespace Hiwell.AddressBook.API
 
 
 #if RELEASE
-            var connectionStringJson = File.ReadAllText("/tmp/connection-strings.json");
-            var providerObject = System.Text.Json.JsonSerializer.Deserialize<ConnectionStringProvider>(connectionStringJson);
-            services.AddSingleton<IConnectionStringProvider>(providerObject);
             services.AddPostGreSql();
 #else
             services.AddSqlite();
