@@ -18,6 +18,16 @@ namespace Hiwell.AddressBook.EF.Sqlite
 
         public static void EnsureSqliteDbCreated(this IApplicationBuilder app, bool deleteExistingDatabase = false)
         {
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetRequiredService<AddressBookSqliteDbContext>();
+
+                CreateAndSeed(context, deleteExistingDatabase,true);
+            }
+        }
+
+        public static void CreateAndSeed(AddressBookSqliteDbContext context, bool deleteExistingDatabase, bool seed)
+        {
             if (deleteExistingDatabase)
             {
                 var dbPath = AddressBookSqliteDbContext.GetDummyDatabasePath();
@@ -27,11 +37,10 @@ namespace Hiwell.AddressBook.EF.Sqlite
                 }
             }
 
-            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
-            {
-                var context = serviceScope.ServiceProvider.GetRequiredService<AddressBookSqliteDbContext>();
-                context.Database.EnsureCreated();
+            context.Database.EnsureCreated();
 
+            if (seed)
+            {
                 var hasData = context.Contacts.Count() > 0;
 
                 //TODO: Generate random data with BOGUS 

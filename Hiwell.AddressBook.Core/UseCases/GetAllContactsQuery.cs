@@ -14,7 +14,7 @@ namespace Hiwell.AddressBook.Core.UseCases
     {
     }
 
-    class GetAllContactsQueryHandler : BaseQueryHandler<GetAllContactsQuery, List<ContactDto>>
+    public class GetAllContactsQueryHandler : BaseQueryHandler<GetAllContactsQuery, List<ContactDto>>
     {
         public GetAllContactsQueryHandler(IAddressBookDbContext context, IMapper mapper) : base(context, mapper)
         {

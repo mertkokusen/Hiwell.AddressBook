@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hiwell.AddressBook.Core", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hiwell.AddressBook.EF.Sqlite", "Hiwell.AddressBook.EF.InMemory\Hiwell.AddressBook.EF.Sqlite.csproj", "{AA1FB863-4B57-44E6-B8E8-F1B789B4F66D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hiwell.AddressBook.EF.PostGreSQL", "Hiwell.AddressBook.EF.PostGreSQL\Hiwell.AddressBook.EF.PostGreSQL.csproj", "{713B604D-632E-4F72-A704-A6B21517F4DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hiwell.AddressBook.EF.PostGreSQL", "Hiwell.AddressBook.EF.PostGreSQL\Hiwell.AddressBook.EF.PostGreSQL.csproj", "{713B604D-632E-4F72-A704-A6B21517F4DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hiwell.AddressBook.Test", "Hiwell.AddressBook.Test\Hiwell.AddressBook.Test.csproj", "{4CA3B04B-0575-4C1F-9125-415EB0CA761E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{713B604D-632E-4F72-A704-A6B21517F4DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{713B604D-632E-4F72-A704-A6B21517F4DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{713B604D-632E-4F72-A704-A6B21517F4DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CA3B04B-0575-4C1F-9125-415EB0CA761E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CA3B04B-0575-4C1F-9125-415EB0CA761E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CA3B04B-0575-4C1F-9125-415EB0CA761E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CA3B04B-0575-4C1F-9125-415EB0CA761E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
