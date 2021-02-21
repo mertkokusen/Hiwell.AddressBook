@@ -35,13 +35,14 @@ namespace Hiwell.AddressBook.Core.UseCases
 
     public class AddNewContactCommandResponse : BaseCommandResult
     {
+        public string UniqueId { get; set; }
         private AddNewContactCommandResponse(string error = null) : base(error)
         {
         }
 
-        public static AddNewContactCommandResponse Ok()
+        public static AddNewContactCommandResponse Ok(string uniqueId)
         {
-            return new AddNewContactCommandResponse();
+            return new AddNewContactCommandResponse() { UniqueId = uniqueId };
         }
 
         public static AddNewContactCommandResponse Fail(string error)
@@ -73,7 +74,7 @@ namespace Hiwell.AddressBook.Core.UseCases
             var result = await this._context.SaveChangesAsync(cancellationToken);
 
             if (result == 1)
-                return AddNewContactCommandResponse.Ok();
+                return AddNewContactCommandResponse.Ok(newContact.UniqueId);
             else
                 return AddNewContactCommandResponse.Fail("Couldn't create contact.");
         }

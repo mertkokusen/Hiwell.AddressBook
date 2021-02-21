@@ -20,7 +20,7 @@ namespace Hiwell.AddressBook.Core.UseCases
         public string Email { get; set; }
     }
 
-    class SearchContactsQueryHandler : BaseQueryHandler<SearchContactsQueryRequest, List<ContactDto>>
+    public class SearchContactsQueryHandler : BaseQueryHandler<SearchContactsQueryRequest, List<ContactDto>>
     {
         public SearchContactsQueryHandler(IAddressBookDbContext context, IMapper mapper) : base(context, mapper)
         {
