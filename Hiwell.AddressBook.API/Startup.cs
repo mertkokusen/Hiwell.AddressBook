@@ -3,7 +3,6 @@ using Hiwell.AddressBook.API.Filters;
 using Hiwell.AddressBook.Core.Extensions;
 using Hiwell.AddressBook.Core.UseCases;
 using Hiwell.AddressBook.EF.PostGreSQL;
-using Hiwell.AddressBook.EF.Sqlite;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
