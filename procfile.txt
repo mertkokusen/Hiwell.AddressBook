@@ -1,0 +1,1 @@
+web: dotnet exec ./Hiwell.AddressBook.API.dll --urls http://0.0.0.0:5000/
