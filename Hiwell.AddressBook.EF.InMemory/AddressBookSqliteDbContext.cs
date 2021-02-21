@@ -27,11 +27,6 @@ namespace Hiwell.AddressBook.EF.Sqlite
 
         public DbSet<Contact> Contacts { get; set; }
 
-        public bool HasChanges()
-        {
-            return this.HasChanges();
-        }
-
         public static string GetDummyDatabasePath() => Path.Combine(Path.GetDirectoryName(typeof(AddressBookSqliteDbContext).Assembly.Location), "HiWell.AddressBook.Test.db");
     }
 }
