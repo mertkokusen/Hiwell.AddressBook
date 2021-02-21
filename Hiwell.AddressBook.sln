@@ -13,6 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hiwell.AddressBook.EF.PostG
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hiwell.AddressBook.Test", "Hiwell.AddressBook.Test\Hiwell.AddressBook.Test.csproj", "{4CA3B04B-0575-4C1F-9125-415EB0CA761E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".ebextensions", ".ebextensions", "{5AB39A0B-853F-4CBF-B712-1FC5E532A9A2}"
+	ProjectSection(SolutionItems) = preProject
+		database.config = database.config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -1,9 +1,8 @@
-﻿using Hiwell.AddressBook.Core.Interfaces;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using System;
+﻿using System;
 using System.Linq;
+using Microsoft.AspNetCore.Builder;
+using Hiwell.AddressBook.Core.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Hiwell.AddressBook.EF.PostGreSQL
 {

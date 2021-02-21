@@ -1,14 +1,18 @@
 using FluentValidation.AspNetCore;
 using Hiwell.AddressBook.API.Filters;
+using Hiwell.AddressBook.Core;
 using Hiwell.AddressBook.Core.Extensions;
+using Hiwell.AddressBook.Core.Interfaces;
 using Hiwell.AddressBook.Core.UseCases;
 using Hiwell.AddressBook.EF.PostGreSQL;
+using Hiwell.AddressBook.EF.Sqlite;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System.IO;
 
 namespace Hiwell.AddressBook.API
 {
@@ -34,8 +38,15 @@ namespace Hiwell.AddressBook.API
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Hiwell.AddressBook.API", Version = "v1" });
             });
 
-            //services.AddSqlite();
+
+#if RELEASE
+            var connectionStringJson = File.ReadAllText("/tmp/connection-strings.json");
+            var providerObject = System.Text.Json.JsonSerializer.Deserialize<ConnectionStringProvider>(connectionStringJson);
+            services.AddSingleton<IConnectionStringProvider>(providerObject);
             services.AddPostGreSql();
+#else
+            services.AddSqlite();
+#endif
 
             services.ConfigureCoreDependecies();
         }
@@ -66,8 +77,11 @@ namespace Hiwell.AddressBook.API
                 endpoints.MapControllers();
             });
 
-            //app.EnsureSqliteDbCreated(deleteExistingDatabase: true);
+#if RELEASE
             app.EnsurePostGreDbCreated();
+#else
+            app.EnsureSqliteDbCreated(deleteExistingDatabase: true);
+#endif
         }
     }
 }
